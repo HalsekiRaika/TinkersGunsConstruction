@@ -8,14 +8,12 @@ import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import reirokusanami.events.TGCEventRegistry;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 
 public class UsualProxy {
     public void PreInit(FMLPreInitializationEvent event){
-        MinecraftForge.EVENT_BUS.register(new TGCEventRegistry());
-        //This Area After Create TGCEntities.init
+
     }
 
     public void registerModels() {

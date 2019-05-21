@@ -14,6 +14,11 @@ public class TGCConfig {
         @Config.Comment({InfomationText + "Platinum"})
         public static boolean Platinum = true;
     }
+    public static class WeaponCategoly {
+        @Config.RequiresMcRestart
+        @Config.Comment({InfomationText + "Platinum"})
+        public static boolean HandGun = true;
+    }
 
     public static boolean isAllowedMaterial(String Material){
         if(TypesMaterial().containsKey(Material)){
