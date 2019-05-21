@@ -20,7 +20,7 @@ public class UsualProxy {
 
     public void registerModels() {
         if(Loader.instance().hasReachedState(LoaderState.INITIALIZATION)){
-            ReiRokusanami.TinkersGunsConstruction.LOGGER.error("Proxy.registerModels has to be called during preInit.");
+            reirokusanami.TinkersGunsConstruction.LOGGER.error("Proxy.registerModels has to be called during preInit.");
         }
     }
 

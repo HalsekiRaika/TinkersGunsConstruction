@@ -19,8 +19,7 @@ public class ClientProxy extends UsualProxy {
 
     }
 
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event) {
+    public void registerModels(ModelRegistryEvent event) {
     }
 
     @Override
