@@ -1,4 +1,4 @@
-package ReiRokusanami.Miscellaneous;
+package reirokusanami.miscellaneous;
 
 import net.minecraftforge.common.config.Config;
 

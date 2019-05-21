@@ -1,6 +1,5 @@
-package ReiRokusanami.Materials.modules;
+package reirokusanami.materials.modules;
 
-import ReiRokusanami.Proxy.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.library.TinkerRegistry;
@@ -21,7 +20,7 @@ public class BaseMaterial {
         ToolPart.setRegistryName(Name);
         Registry.register(ToolPart);
         TinkerRegistry.registerToolPart(ToolPart);
-        //ReiRokusanami.Proxy.ClientProxy.registerToolPartModel(ToolPart);
+        //reirokusanami.Proxy.ClientProxy.registerToolPartModel(ToolPart);
         TOOL_PARTS.add(ToolPart);
 
         return ToolPart;
@@ -34,7 +33,7 @@ public class BaseMaterial {
         } else {
             TinkerRegistry.registerToolStationCrafting(ToolCore);
         }
-        //ReiRokusanami.Proxy.registerToolModel(ToolCore);
+        //reirokusanami.Proxy.registerToolModel(ToolCore);
         TOOL_CORES.add(ToolCore);
     }
 

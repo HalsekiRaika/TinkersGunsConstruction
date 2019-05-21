@@ -1,4 +1,4 @@
-package ReiRokusanami.Materials;
+package reirokusanami.materials;
 
 import slimeknights.tconstruct.library.materials.Material;
 
@@ -9,10 +9,7 @@ public class TGCMaterial extends Material {
     }
 
     public boolean isRegistered() {
-        if(Registered) {
-            return true;
-        }
-        return false;
+        return Registered;
     }
 
     public void setRegistered() {

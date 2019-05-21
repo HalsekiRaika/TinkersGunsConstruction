@@ -1,7 +1,7 @@
-package ReiRokusanami.events;
+package reirokusanami.events;
 
-import ReiRokusanami.Materials.TGCMaterial;
-import ReiRokusanami.Miscellaneous.TGCConfig;
+import reirokusanami.materials.TGCMaterial;
+import reirokusanami.miscellaneous.TGCConfig;
 import slimeknights.tconstruct.library.events.MaterialEvent;
 import slimeknights.tconstruct.library.materials.Material;
 
