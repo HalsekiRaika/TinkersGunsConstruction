@@ -1,5 +1,6 @@
 package ReiRokusanami.Proxy;
 
+import ReiRokusanami.TinkersGunsConstruction;
 import ReiRokusanami.events.TGCEventRegistry;
 import net.minecraft.item.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -9,6 +10,7 @@ import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import slimeknights.tconstruct.common.ModelRegisterUtil;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 
@@ -20,7 +22,7 @@ public class UsualProxy {
 
     public void registerModels() {
         if(Loader.instance().hasReachedState(LoaderState.INITIALIZATION)){
-            System.out.println("Proxy.registerModels has to be called during preInit.");
+            TinkersGunsConstruction.LOGGER.error("Proxy.registerModels has to be called during preInit.");
         }
     }
 
