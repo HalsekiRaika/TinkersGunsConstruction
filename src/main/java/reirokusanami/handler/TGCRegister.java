@@ -2,6 +2,8 @@ package reirokusanami.handler;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.SidedProxy;
+import reirokusanami.proxy.UsualProxy;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.ToolCore;
@@ -14,7 +16,11 @@ public class TGCRegister {
 
     public static final List<ToolPart> TOOL_PARTS = new ArrayList<>();
     public static final List<ToolCore> TOOL_CORES = new ArrayList<>();
+    private static final String CLIENT_PROXY = "reirokusanami.proxy.ClientProxy";
+    private static final String SERVER_PROXY = "reirokusanami.proxy.UsualProxy";
 
+    @SidedProxy(clientSide = CLIENT_PROXY)
+    public static UsualProxy proxy;
     /*
      * @param Toolpart
      * @param Name Enter the ToolPart name.
@@ -26,6 +32,7 @@ public class TGCRegister {
         _ToolPart.setRegistryName(Name);
         event.getRegistry().register(_ToolPart);
         TinkerRegistry.registerToolPart(_ToolPart);
+        proxy.registerToolPartModel(_ToolPart);
         TOOL_PARTS.add(_ToolPart);
     }
 
@@ -38,6 +45,7 @@ public class TGCRegister {
         if(isAllowConfig){
             event.getRegistry().register(_ToolCore);
             TinkerRegistry.registerTool(_ToolCore);
+            proxy.registerToolModel(_ToolCore);
             TOOL_CORES.add(_ToolCore);
         }
     }

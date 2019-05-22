@@ -15,8 +15,6 @@ public class ClientProxy extends UsualProxy {
     @Override
     public void PreInit(FMLPreInitializationEvent event) {
         super.PreInit(event);
-        //MinecraftForge.EVENT_BUS.register(new TGCEventRender());
-
     }
 
     public void registerModels(ModelRegistryEvent event) {

@@ -1,7 +1,6 @@
 package reirokusanami.proxy;
 
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.LoaderState;
@@ -13,7 +12,6 @@ import slimeknights.tconstruct.library.tools.ToolCore;
 
 public class UsualProxy {
     public void PreInit(FMLPreInitializationEvent event){
-
     }
 
     public void registerModels() {

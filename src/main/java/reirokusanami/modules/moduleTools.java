@@ -6,8 +6,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import reirokusanami.handler.TGCRegister;
 import reirokusanami.miscellaneous.TGCConfig;
 import reirokusanami.tools.weaponHandgun;
-import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
