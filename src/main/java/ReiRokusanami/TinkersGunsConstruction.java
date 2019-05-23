@@ -19,7 +19,7 @@ import reirokusanami.handler.GunsItems;
 @Mod(modid = TinkersGunsConstruction.MODID, name = TinkersGunsConstruction.MODNAME, version = TinkersGunsConstruction.VERSION)
 public class TinkersGunsConstruction {
     public static final String MODID = "tinkersgunsconstruction";
-    public static final String MODNAME = "Tinkers Guns Construction";
+    public static final String MODNAME = "TinkersGunsConstruction";
     public static final String VERSION = "0.1.0";
     public static Logger LOGGER;
 
