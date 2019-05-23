@@ -4,7 +4,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.proxy.UsualProxy;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
@@ -24,34 +23,23 @@ public class TGCRegister {
     public static final List<ToolPart> TOOL_PARTS = new ArrayList<>();
     public static final List<ToolCore> TOOL_CORES = new ArrayList<>();
     private static final String CLIENT_PROXY = "reirokusanami.proxy.ClientProxy";
-    private static final String SERVER_PROXY = "reirokusanami.proxy.ServerProxy";
+    private static final String SERVER_PROXY = "reirokusanami.proxy.UsualProxy";
 
     @SidedProxy(clientSide = CLIENT_PROXY)
     public static UsualProxy proxy;
-
-    public void PartInitialization(IForgeRegistry<Item> event){
-
-    }
-
     /*
-     * @param _Toolpart ToolPart
+     * @param Toolpart
      * @param Name Enter the ToolPart name.
      * @param Cost Cost required to cast ToolPart (ingot conversion)
-     * @param event IForgeRegistry<Item>
+     * @param event RegistryEvent.Register<Item>
      */
-    protected static ToolPart RegisterParts(ToolPart _ToolPart, String Name, int Cost, IForgeRegistry<Item> event) {
+    public static void RegiterParts(ToolPart _ToolPart, String Name, int Cost, RegistryEvent.Register<Item> event) {
         _ToolPart = new ToolPart(Material.VALUE_Ingot * Cost);
         _ToolPart.setRegistryName(Name);
-        event.register(_ToolPart);
+        event.getRegistry().register(_ToolPart);
         TinkerRegistry.registerToolPart(_ToolPart);
         proxy.registerToolPartModel(_ToolPart);
         TOOL_PARTS.add(_ToolPart);
-
-        return _ToolPart;
-    }
-
-    public void ToolInitialization(IForgeRegistry<Item> event){
-
     }
 
     /*
@@ -59,20 +47,16 @@ public class TGCRegister {
      * @param _ToolCore EXAMPLE: public static ToolCore tool_weaponHandgun = new weaponHandgun();
      * @param event RegistryEvent.Register<Item>
      */
-    protected static void RegisterTools(Boolean isAllowConfig , Boolean ForgeCrafting, ToolCore _ToolCore, IForgeRegistry<Item> event) {
+    public static void RegisterTools(Boolean isAllowConfig ,ToolCore _ToolCore, RegistryEvent.Register<Item> event) {
         if(isAllowConfig){
-            event.register(_ToolCore);
-            if(ForgeCrafting == true) {
-                TinkerRegistry.registerToolForgeCrafting(_ToolCore);
-            } else {
-                TinkerRegistry.registerToolStationCrafting(_ToolCore);
-            }
+            event.getRegistry().register(_ToolCore);
+            TinkerRegistry.registerTool(_ToolCore);
             proxy.registerToolModel(_ToolCore);
             TOOL_CORES.add(_ToolCore);
         }
     }
 
-    protected static void RegisterToolBuilding() {
+    public static void RegisterToolBuilding() {
         for(final IToolPart Part: getTGCPart()){
             for(final ToolCore Tool: getTGCTool()){
                 for(final PartMaterialType types: Tool.getRequiredComponents()) {
@@ -91,5 +75,4 @@ public class TGCRegister {
     public static List<ToolCore> getTGCTool(){
         return Collections.unmodifiableList(TOOL_CORES);
     }
-
 }
