@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.Logger;
-import reirokusanami.handler.GunsItems;
+import reirokusanami.modules.moduleTools;
 
 
 @Mod(modid = TinkersGunsConstruction.MODID, name = TinkersGunsConstruction.MODNAME, version = TinkersGunsConstruction.VERSION)
@@ -35,14 +35,14 @@ public class TinkersGunsConstruction {
     public void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
         //GunsBlocks.registerItemBlocks(registry);
-        GunsItems.registerItems(registry);
+        moduleTools.InitializationItems(event);
     }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
         //GunsBlocks.registerModels();
-        GunsItems.registerModels();
+        //GunsItems.registerModels();
     }
 
     @Mod.EventHandler
