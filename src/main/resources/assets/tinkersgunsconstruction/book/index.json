@@ -1,0 +1,12 @@
+[
+  {
+    "name": "TGC",
+    "data": "sections/tgc.json",
+    "icon": {
+      "item": {
+        "id": "minecraft:gunpowder",
+        "damage": 0
+      }
+    }
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "tgc",
+    "type": "image with text below",
+    "data": "intro/tgc.json"
+  },
+  {
+    "name": "weaponHandgun",
+    "type": "tool",
+    "data": "tools/weaponHandgun.json"
+  },
+  {
+    "type": "blank"
+  }
+]
