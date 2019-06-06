@@ -1,5 +1,7 @@
 package reirokusanami;
 
+import org.apache.logging.log4j.Logger;
+
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,8 +13,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.modules.moduleTools;
+import slimeknights.mantle.client.book.repository.FileRepository;
+import slimeknights.tconstruct.library.book.TinkerBook;
 
 
 @Mod(
@@ -50,6 +54,7 @@ public class TinkersGunsConstruction {
     public void registerModels(ModelRegistryEvent event) {
         //GunsBlocks.registerModels();
         //GunsItems.registerModels();
+		TinkerBook.INSTANCE.addRepository(new FileRepository("tinkersgunsconstruction:book"));
     }
 
     @Mod.EventHandler
