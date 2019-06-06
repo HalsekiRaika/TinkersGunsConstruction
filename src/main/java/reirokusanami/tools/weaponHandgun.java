@@ -13,10 +13,10 @@ import java.util.List;
 
 public class weaponHandgun extends TinkerToolCore {
     public weaponHandgun(){
-        super(PartMaterialType.handle(TinkerTools.toughToolRod),
+        super(PartMaterialType.handle(moduleTools.part_Grip),
                 PartMaterialType.head(moduleTools.part_Muzzle),
-                new PartMaterialType(moduleTools.part_Hammer, "part_hammer"),
-                new PartMaterialType(moduleTools.part_Slide, "part_Slide"));
+                new PartMaterialType(moduleTools.part_Hammer),
+                new PartMaterialType(moduleTools.part_barrelMedium));
         this.addCategory(Category.WEAPON);
         this.setRegistryName("weaponHandgun");
     }

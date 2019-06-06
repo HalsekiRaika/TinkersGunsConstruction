@@ -28,12 +28,12 @@ public class TGCRegister {
     @SidedProxy(clientSide = CLIENT_PROXY)
     public static UsualProxy proxy;
     /*
-     * @param Toolpart
+     * @param _ToolPart ToolPart
      * @param Name Enter the ToolPart name.
      * @param Cost Cost required to cast ToolPart (ingot conversion)
      * @param event RegistryEvent.Register<Item>
      */
-    public static void RegiterParts(ToolPart _ToolPart, String Name, int Cost, RegistryEvent.Register<Item> event) {
+    public static void RegisterParts(ToolPart _ToolPart, String Name, int Cost, RegistryEvent.Register<Item> event) {
         _ToolPart = new ToolPart(Material.VALUE_Ingot * Cost);
         _ToolPart.setRegistryName(Name);
         event.getRegistry().register(_ToolPart);
@@ -48,7 +48,7 @@ public class TGCRegister {
      * @param event RegistryEvent.Register<Item>
      */
     public static void RegisterTools(Boolean isAllowConfig ,ToolCore _ToolCore, RegistryEvent.Register<Item> event) {
-        if(isAllowConfig){
+        if(isAllowConfig == true){
             event.getRegistry().register(_ToolCore);
             TinkerRegistry.registerTool(_ToolCore);
             proxy.registerToolModel(_ToolCore);

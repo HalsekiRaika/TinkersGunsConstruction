@@ -1,14 +1,16 @@
 package reirokusanami.miscellaneous;
 
 import net.minecraftforge.common.config.Config;
+import reirokusanami.TinkersGunsConstruction;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Config(modid = "tinkersgunsconstruction", type = Config.Type.INSTANCE, name = "TinkersGunsConstruction")
+@Config(modid = TinkersGunsConstruction.MODID, type = Config.Type.INSTANCE, name = "TinkersGunsConstruction")
 public class TGCConfig {
     @Config.Ignore
     private static final String InfomationText = "Please rewrite to False to disable ";
+
     public static class MaterialCategory {
         @Config.RequiresMcRestart
         @Config.Comment({InfomationText + "Platinum"})
@@ -16,7 +18,7 @@ public class TGCConfig {
     }
     public static class WeaponCategoly {
         @Config.RequiresMcRestart
-        @Config.Comment({InfomationText + "Platinum"})
+        @Config.Comment({InfomationText + "HandGun"})
         public static boolean HandGun = true;
     }
 

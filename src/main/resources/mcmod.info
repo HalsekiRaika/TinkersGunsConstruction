@@ -7,10 +7,10 @@
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ReiRokusanami", "kawaemon", "bagu_chan"],
+  "authorList": ["ReiRokusanami", "kawaemon", "bagu_chan", "Hosta_Plantain"],
   "credits": "The Forge and FML guys, for making with Tinkers Construct",
   "logoFile": "assets/tinkersgunsconstruction/banner.png",
   "screenshots": [],
-  "dependencies": [""]
+  "dependencies": []
 }
 ]
