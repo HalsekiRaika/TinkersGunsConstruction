@@ -11,16 +11,24 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.Logger;
 import reirokusanami.modules.moduleTools;
 
 
-@Mod(modid = TinkersGunsConstruction.MODID, name = TinkersGunsConstruction.MODNAME, version = TinkersGunsConstruction.VERSION)
+@Mod(
+        modid = TinkersGunsConstruction.MODID,
+        name = TinkersGunsConstruction.MODNAME,
+        version = TinkersGunsConstruction.VERSION,
+        dependencies = TinkersGunsConstruction.DEPENDENCIES
+)
 public class TinkersGunsConstruction {
-    public static final String MODID = "tinkersgunsconstruction";
+    public static final String MODID = "tgc";
     public static final String MODNAME = "TinkersGunsConstruction";
     public static final String VERSION = "0.1.0";
+    public static final String DEPENDENCIES =
+            "required-after:mantle;"+
+            "required-after:tconstruct@[1.12.2-2.12.0.135,);"+
+            "required-after:forge@[14.23.5.2836,)";
     public static Logger LOGGER;
 
     @Mod.Instance(TinkersGunsConstruction.MODID)
@@ -33,7 +41,6 @@ public class TinkersGunsConstruction {
 
     @SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) {
-        IForgeRegistry<Item> registry = event.getRegistry();
         //GunsBlocks.registerItemBlocks(registry);
         moduleTools.InitializationItems(event);
     }

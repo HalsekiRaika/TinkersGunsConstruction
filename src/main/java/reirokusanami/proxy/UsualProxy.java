@@ -16,6 +16,10 @@ public class UsualProxy {
     public void PreInit(FMLPreInitializationEvent event){
     }
 
+    public void registerItemRenderer(Item _Item, int Meta, String ID){
+
+    }
+
     public void registerModels() {
         if(Loader.instance().hasReachedState(LoaderState.INITIALIZATION)){
             reirokusanami.TinkersGunsConstruction.LOGGER.error("proxy.registerModels has to be called during preInit.");
