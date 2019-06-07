@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["ReiRokusanami", "kawaemon", "bagu_chan", "Hosta_Plantain"],
   "credits": "The Forge and FML guys, for making with Tinkers Construct",
-  "logoFile": "assets/tinkersgunsconstruction/banner.png",
+  "logoFile": "assets/tgc/banner.png",
   "screenshots": [],
   "dependencies": []
 }
