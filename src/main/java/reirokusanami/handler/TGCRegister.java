@@ -35,7 +35,7 @@ public class TGCRegister {
      * @param Cost Cost required to cast ToolPart (ingot conversion)
      * @param event RegistryEvent.Register<Item>
      */
-    public static void RegisterParts(ToolPart _ToolPart, String Name, int Cost, RegistryEvent.Register<Item> event) {
+    public static ToolPart RegisterParts(ToolPart _ToolPart, String Name, int Cost, RegistryEvent.Register<Item> event) {
         _ToolPart = new ToolPart(Material.VALUE_Ingot * Cost);
         _ToolPart.setUnlocalizedName(Name);
         _ToolPart.setRegistryName(new ResourceLocation(TinkersGunsConstruction.MODID, _ToolPart.getUnlocalizedName().substring(5)));
@@ -43,6 +43,7 @@ public class TGCRegister {
         TinkerRegistry.registerToolPart(_ToolPart);
         proxy.registerToolPartModel(_ToolPart);
         TOOL_PARTS.add(_ToolPart);
+        return _ToolPart;
     }
 
     /*

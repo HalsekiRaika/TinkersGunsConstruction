@@ -1,5 +1,9 @@
 package reirokusanami.tools;
 
+import java.util.List;
+
+import net.minecraft.util.ResourceLocation;
+import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.modules.moduleTools;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
@@ -7,9 +11,6 @@ import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.TinkerToolCore;
 import slimeknights.tconstruct.library.tools.ToolNBT;
-import slimeknights.tconstruct.tools.TinkerTools;
-
-import java.util.List;
 
 public class weaponHandgun extends TinkerToolCore {
     public weaponHandgun(){
@@ -18,7 +19,8 @@ public class weaponHandgun extends TinkerToolCore {
                 new PartMaterialType(moduleTools.part_Hammer),
                 new PartMaterialType(moduleTools.part_barrelMedium));
         this.addCategory(Category.WEAPON);
-        this.setRegistryName("weaponHandgun");
+        this.setUnlocalizedName("weaponHandgun");
+        this.setRegistryName(new ResourceLocation(TinkersGunsConstruction.MODID, this.getUnlocalizedName().substring(5)));
     }
 
     @Override
