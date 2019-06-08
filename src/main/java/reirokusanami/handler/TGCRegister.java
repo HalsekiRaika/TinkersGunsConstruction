@@ -1,9 +1,15 @@
 package reirokusanami.handler;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.SidedProxy;
+import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.proxy.UsualProxy;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
@@ -13,10 +19,6 @@ import slimeknights.tconstruct.library.tools.Pattern;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.tools.TinkerTools;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class TGCRegister {
 
@@ -35,7 +37,8 @@ public class TGCRegister {
      */
     public static void RegisterParts(ToolPart _ToolPart, String Name, int Cost, RegistryEvent.Register<Item> event) {
         _ToolPart = new ToolPart(Material.VALUE_Ingot * Cost);
-        _ToolPart.setRegistryName(Name);
+        _ToolPart.setUnlocalizedName(Name);
+        _ToolPart.setRegistryName(new ResourceLocation(TinkersGunsConstruction.MODID, _ToolPart.getUnlocalizedName().substring(5)));
         event.getRegistry().register(_ToolPart);
         TinkerRegistry.registerToolPart(_ToolPart);
         proxy.registerToolPartModel(_ToolPart);
@@ -68,7 +71,7 @@ public class TGCRegister {
         }
     }
 
-    public static List<IToolPart> getTGCPart(){
+    public static List<ToolPart> getTGCPart(){
         return Collections.unmodifiableList(TOOL_PARTS);
     }
 
