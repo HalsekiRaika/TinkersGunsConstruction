@@ -1,0 +1,9 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "tgc:items/handgun/part_handle",
+        "layer1": "tgc:items/handgun/part_muzzle",
+        "layer2": "tgc:items/handgun/part_hammer",
+        "layer3": "tgc:items/handgun/part_slide"
+    }
+}

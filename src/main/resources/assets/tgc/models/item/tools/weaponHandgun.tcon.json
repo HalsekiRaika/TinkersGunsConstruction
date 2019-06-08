@@ -1,8 +1,0 @@
-{
-    "textures": {
-        "layer0": "tgc:items/handgun/part_Handle",
-        "layer1": "tgc:items/handgun/part_Muzzle",
-        "layer2": "tgc:items/handgun/part_Hammer",
-        "layer3": "tgc:items/handgun/part_Slide"
-    }
-}
