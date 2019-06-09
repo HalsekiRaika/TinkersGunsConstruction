@@ -1,10 +1,10 @@
 package reirokusanami.miscellaneous;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.minecraftforge.common.config.Config;
 import reirokusanami.TinkersGunsConstruction;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Config(modid = TinkersGunsConstruction.MODID, type = Config.Type.INSTANCE, name = "TinkersGunsConstruction")
 public class TGCConfig {
@@ -22,6 +22,9 @@ public class TGCConfig {
 		@Config.RequiresMcRestart
 		@Config.Comment({ InfomationText + "HandGun" })
 		public static boolean handGun = true;
+		@Config.RequiresMcRestart
+		@Config.Comment({InfomationText + "SorceryGun"})
+		public static boolean sorceryGun = true;
 	}
 
 	public static boolean isAllowedMaterial(String material) {
