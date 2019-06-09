@@ -1,53 +1,35 @@
 package reirokusanami.modules;
 
-import static reirokusanami.handler.TGCRegister.RegisterToolBuilding;
-
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.handler.TGCRegister;
 import reirokusanami.miscellaneous.TGCConfig;
-import reirokusanami.tools.weaponHandgun;
-import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.tools.Pattern;
+import reirokusanami.tools.WeaponHandgun;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
-import slimeknights.tconstruct.tools.TinkerTools;
 
-public class moduleTools implements IModule {
-    //PARTS
-    public static ToolPart part_barrelMedium;
-    public static ToolPart part_Hammer;
-    public static ToolPart part_Muzzle;
-    public static ToolPart part_Grip;
-    public static ToolPart part_Bulletcartridge;
-    public static ToolPart part_Warhead;
-    public static ToolPart part_Propellant;
+public class ModuleTools implements IModule {
 
-    //TOOLS
-    public static ToolCore tool_weaponHandgun;
+	// PARTS
+	public static ToolPart	partBarrelMedium;
+	public static ToolPart	partHammer;
+	public static ToolPart	partMuzzle;
+	public static ToolPart	partGrip;
+	public static ToolPart	partBulletcartridge;
+	public static ToolPart	partWarhead;
+	public static ToolPart	partPropellant;
 
-    public static void InitializationItems(RegistryEvent.Register<Item> event){
-    	part_barrelMedium = TGCRegister.RegisterParts(part_barrelMedium, "medium_barrel", 8, event);
-        part_Hammer = TGCRegister.RegisterParts(part_Hammer, "hammer", 1, event);
-        part_Muzzle = TGCRegister.RegisterParts(part_Muzzle, "muzzle", 2, event);
-        part_Grip = TGCRegister.RegisterParts(part_Grip, "grip", 3, event);
-        
-        registerPartStencil(part_barrelMedium);
-        registerPartStencil(part_Hammer);
-        registerPartStencil(part_Muzzle);
-        registerPartStencil(part_Grip);
+	// TOOLS
+	public static ToolCore	toolWeaponHandgun;
 
-        tool_weaponHandgun = new weaponHandgun();
-        TGCRegister.RegisterTools(TGCConfig.WeaponCategoly.HandGun ,tool_weaponHandgun, event);
-        RegisterToolBuilding();
-    }
-    
-    private static void registerPartStencil(ToolPart part)
-    {
-    	ItemStack stencil = new ItemStack(TinkerTools.pattern);
-		Pattern.setTagForPart(stencil, part);
-		TinkerRegistry.registerStencilTableCrafting(stencil);
-    }
+	public static void initializationItems(IForgeRegistry<Item> registry) {
+		partBarrelMedium = TGCRegister.registerParts("medium_barrel", 8, registry);
+		partHammer = TGCRegister.registerParts("hammer", 1, registry);
+		partMuzzle = TGCRegister.registerParts("muzzle", 2, registry);
+		partGrip = TGCRegister.registerParts("grip", 3, registry);
+
+		toolWeaponHandgun = TGCRegister.registerTools(TGCConfig.WeaponCategoly.handGun, new WeaponHandgun(), registry);
+		TGCRegister.registerToolBuilding();
+	}
 
 }
