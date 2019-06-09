@@ -2,15 +2,25 @@ package reirokusanami.tools;
 
 import java.util.List;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.modules.ModuleTools;
+import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.TinkerToolCore;
 import slimeknights.tconstruct.library.tools.ToolNBT;
+
 
 public class WeaponHandgun extends TinkerToolCore {
 
@@ -32,6 +42,11 @@ public class WeaponHandgun extends TinkerToolCore {
 	@Override
 	public double attackSpeed() {
 		return 2;
+	}
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand){
+		return null;
 	}
 
 	protected ToolNBT buildTagData(List<Material> materialList) {

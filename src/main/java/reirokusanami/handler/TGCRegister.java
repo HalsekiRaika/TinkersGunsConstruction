@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.proxy.UsualProxy;
@@ -53,11 +57,10 @@ public class TGCRegister {
 	/**
 	 * @param isAllowConfig Reference from TGCConfig
 	 * @param toolCore      EXAMPLE: public static ToolCore tool_weaponHandgun = new weaponHandgun();
-	 * @param event         RegistryEvent.Register<Item>
+	 * @param registry      RegistryEvent.Register<Item>
 	 */
 	public static ToolCore registerTools(Boolean isAllowConfig, ToolCore toolCore, IForgeRegistry<Item> registry) {
-		if (isAllowConfig == true)
-		{
+		if (isAllowConfig == true) {
 			registry.register(toolCore);
 			TinkerRegistry.registerTool(toolCore);
 			TOOL_CORES.add(toolCore);
@@ -67,14 +70,10 @@ public class TGCRegister {
 	}
 
 	public static void registerToolBuilding() {
-		for (final IToolPart part : getTGCPart())
-		{
-			for (final ToolCore tool : getTGCTool())
-			{
-				for (final PartMaterialType types : tool.getRequiredComponents())
-				{
-					if (types.getPossibleParts().contains(part))
-					{
+		for (final IToolPart part : getTGCPart()) {
+			for (final ToolCore tool : getTGCTool()) {
+				for (final PartMaterialType types : tool.getRequiredComponents()) {
+					if (types.getPossibleParts().contains(part)) {
 						TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), (Item) part));
 					}
 				}
@@ -82,13 +81,12 @@ public class TGCRegister {
 		}
 	}
 
-	public static List<ToolPart> getTGCPart()
-	{
+	public static List<ToolPart> getTGCPart() {
 		return Collections.unmodifiableList(TOOL_PARTS);
 	}
 
-	public static List<ToolCore> getTGCTool()
-	{
+	public static List<ToolCore> getTGCTool() {
 		return Collections.unmodifiableList(TOOL_CORES);
 	}
+
 }

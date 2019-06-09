@@ -1,5 +1,8 @@
 package reirokusanami;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.EntityEntry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.item.Item;
@@ -15,9 +18,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.handler.TGCRegister;
 import reirokusanami.modules.ModuleTools;
+import reirokusanami.utils.EnumEntityIDs;
 import slimeknights.mantle.client.book.repository.FileRepository;
+import slimeknights.tconstruct.common.EntityIDs;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
 import slimeknights.tconstruct.library.book.TinkerBook;
 
@@ -53,6 +59,11 @@ public class TinkersGunsConstruction {
 	public void registerItems(RegistryEvent.Register<Item> event) {
 		// GunsBlocks.registerItemBlocks(registry);
 		ModuleTools.initializationItems(event.getRegistry());
+	}
+
+	@SubscribeEvent
+	public void registerEntity(RegistryEvent.Register<EntityEntry> event) {
+		EntityRegistry.registerModEntity(new ResourceLocation(MODID, "bullet"), EntityProjectile.class, "bullet", EnumEntityIDs.BULLET.ordinal(), instance, 64, 1,false);
 	}
 
 	@SideOnly(Side.CLIENT)
