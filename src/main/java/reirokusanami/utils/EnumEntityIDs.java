@@ -1,5 +1,6 @@
 package reirokusanami.utils;
 
 public enum EnumEntityIDs {
-    BULLET
+    BULLET,
+    MAGICBULLET
 }

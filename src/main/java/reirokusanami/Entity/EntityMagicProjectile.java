@@ -1,8 +1,10 @@
 package reirokusanami.Entity;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
@@ -25,9 +27,14 @@ public class EntityMagicProjectile extends EntityProjectileBase {
     protected void onEntityHit(Entity entityHit) {
         super.onEntityHit(entityHit);
         if (!this.getEntityWorld().isRemote && entityHit instanceof EntityLivingBase) {
-            EntityLivingBase LivingBase = (EntityLivingBase) entityHit;
-            LivingBase.setArrowCountInEntity(LivingBase.getArrowCountInEntity() + 1);
+            EntityLivingBase entityLivingBaseHit = (EntityLivingBase) entityHit;
+            entityLivingBaseHit.setArrowCountInEntity(entityLivingBaseHit.getArrowCountInEntity() + 1);
         }
+    }
+
+    @Override
+    protected void playHitBlockSound(float speed, IBlockState state) {
+        this.playSound(SoundEvents.ENTITY_ARROW_HIT, 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
     }
 
     public void onUpdate() {
