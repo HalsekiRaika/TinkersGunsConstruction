@@ -2,7 +2,7 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "tgc:items/sorcerygun/sorcerygun_parthandle",
-    "layer1": "tgc:items/sorcerygun/sorcerygun_partcore",
-    "layer2": "tgc:items/sorcerygun/sorcerygun_partbarrel"
+    "layer1": "tgc:items/sorcerygun/sorcerygun_partbarrel",
+    "layer2": "tgc:items/sorcerygun/sorcerygun_partcore"
   }
 }

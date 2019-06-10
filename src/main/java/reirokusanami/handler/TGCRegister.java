@@ -1,28 +1,22 @@
 package reirokusanami.handler;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.proxy.UsualProxy;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
-import slimeknights.tconstruct.library.tinkering.PartMaterialType;
-import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.Pattern;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.tools.TinkerTools;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TGCRegister {
 
@@ -54,6 +48,19 @@ public class TGCRegister {
 		return toolPart;
 	}
 
+	public static ToolPart registerOrbParts(String name, int cost, IForgeRegistry<Item> registry) {
+		ToolPart toolPart = new ToolPart(Material.VALUE_Ingot * cost);
+		toolPart.setUnlocalizedName(name);
+		toolPart.setRegistryName(new ResourceLocation(TinkersGunsConstruction.MODID, toolPart.getUnlocalizedName().substring(5)));
+		registry.register(toolPart);
+		TinkerRegistry.registerToolPart(toolPart);
+		TOOL_PARTS.add(toolPart);
+
+		TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), toolPart));
+
+		return toolPart;
+	}
+
 	/**
 	 * @param isAllowConfig Reference from TGCConfig
 	 * @param toolCore      EXAMPLE: public static ToolCore tool_weaponHandgun = new weaponHandgun();
@@ -69,17 +76,6 @@ public class TGCRegister {
 		return null;
 	}
 
-	public static void registerToolBuilding() {
-		for (final IToolPart part : getTGCPart()) {
-			for (final ToolCore tool : getTGCTool()) {
-				for (final PartMaterialType types : tool.getRequiredComponents()) {
-					if (types.getPossibleParts().contains(part)) {
-						TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), (Item) part));
-					}
-				}
-			}
-		}
-	}
 
 	public static List<ToolPart> getTGCPart() {
 		return Collections.unmodifiableList(TOOL_PARTS);
@@ -88,5 +84,6 @@ public class TGCRegister {
 	public static List<ToolCore> getTGCTool() {
 		return Collections.unmodifiableList(TOOL_CORES);
 	}
+
 
 }

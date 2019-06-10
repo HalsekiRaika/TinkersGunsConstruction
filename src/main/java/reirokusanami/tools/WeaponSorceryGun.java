@@ -1,12 +1,16 @@
 package reirokusanami.tools;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import reirokusanami.TinkersGunsConstruction;
+import reirokusanami.materials.GunMaterial;
+import reirokusanami.materials.GunMaterialTypes;
 import reirokusanami.modules.ModuleTools;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
@@ -19,11 +23,9 @@ import java.util.List;
 
 public class WeaponSorceryGun extends TinkerToolCore {
 
-    protected final static String HAMMER = "part_hammer";
-    protected final static String SLIDE = "part_slide";
 
     public WeaponSorceryGun() {
-        super(PartMaterialType.handle(ModuleTools.partSmallHandle), PartMaterialType.head(ModuleTools.partCore), new PartMaterialType(ModuleTools.partSmallBarrel));
+        super(PartMaterialType.handle(ModuleTools.partSmallHandle), PartMaterialType.head(ModuleTools.partSmallBarrel), GunMaterial.orb(ModuleTools.partCore));
         this.addCategory(Category.WEAPON);
         this.setUnlocalizedName("sorcerygun");
         this.setRegistryName(new ResourceLocation(TinkersGunsConstruction.MODID, this.getUnlocalizedName().substring(5)));
@@ -45,12 +47,19 @@ public class WeaponSorceryGun extends TinkerToolCore {
     }
 
     protected ToolNBT buildTagData(List<Material> materialList) {
-        ToolNBT NBT = new ToolNBT();
-        NBT.handle(materialList.get(0).getStatsOrUnknown(MaterialTypes.HANDLE));
-        NBT.head(materialList.get(1).getStatsOrUnknown(MaterialTypes.HEAD));
+        GunNBT NBT2 = new GunNBT();
+        NBT2.handle(materialList.get(0).getStatsOrUnknown(MaterialTypes.HANDLE));
+        NBT2.head(materialList.get(1).getStatsOrUnknown(MaterialTypes.HEAD));
         // Now for the time being [Extra]
-        NBT.extra(materialList.get(2).getStatsOrUnknown(SLIDE));
+        NBT2.orbextra(materialList.get(2).getStatsOrUnknown(GunMaterialTypes.ORB));
 
-        return NBT;
+        return NBT2;
+    }
+
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
+        if (this.isInCreativeTab(tab)) {
+            addDefaultSubItems(subItems, null, null, ModuleTools.ENDERPEARL_MATERIAL);
+        }
     }
 }
