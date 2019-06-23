@@ -2,30 +2,28 @@ package reirokusanami.tools;
 
 import java.util.List;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.TinkersGunsConstruction;
+import reirokusanami.core.GunCore;
 import reirokusanami.modules.ModuleTools;
-import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
-import slimeknights.tconstruct.library.tools.TinkerToolCore;
+import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
 import slimeknights.tconstruct.library.tools.ToolNBT;
 
+import javax.annotation.Nonnull;
 
-public class WeaponHandgun extends TinkerToolCore {
+public class WeaponHandgun extends GunCore {
 
 	protected final static String HAMMER = "part_hammer";
 	protected final static String SLIDE = "part_slide";
+	private ImmutableList<Item> BulletMatches = null;
 
 	public WeaponHandgun() {
 		super(PartMaterialType.handle(ModuleTools.partGrip), PartMaterialType.head(ModuleTools.partMuzzle), new PartMaterialType(ModuleTools.partHammer), new PartMaterialType(ModuleTools.partBarrelMedium));
@@ -45,12 +43,42 @@ public class WeaponHandgun extends TinkerToolCore {
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand){
-		return null;
+	public float baseProjectileDamage() {
+		return 4;
 	}
 
-	protected ToolNBT buildTagData(List<Material> materialList) {
-		ToolNBT NBT = new ToolNBT();
+	@Override
+	public float projectileDamageModifier() {
+		return 0;
+	}
+
+	@Override
+	protected float baseProjectileSpeed() {
+		return 16;
+	}
+
+	@Override
+	protected List<Item> getAmmoItems() {
+		if (BulletMatches == null) {
+			ImmutableList.Builder<Item> builder = ImmutableList.builder();
+			if (ModuleTools.bullet != null) {
+				builder.add(ModuleTools.bullet);
+			}
+			BulletMatches = builder.build();
+		}
+		return BulletMatches;
+	}
+
+
+
+	@Nonnull
+	@Override
+	public ItemStack getAmmoToRender(@Nonnull ItemStack weapon, EntityLivingBase player) {
+		return ItemStack.EMPTY;
+	}
+
+	public ProjectileLauncherNBT buildTagData(List<Material> materialList) {
+		ProjectileLauncherNBT NBT = new ProjectileLauncherNBT();
 		NBT.handle(materialList.get(0).getStatsOrUnknown(MaterialTypes.HANDLE));
 		NBT.head(materialList.get(1).getStatsOrUnknown(MaterialTypes.HEAD));
 		// Now for the time being [Extra]

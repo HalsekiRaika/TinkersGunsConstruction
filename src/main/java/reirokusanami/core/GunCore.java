@@ -1,6 +1,9 @@
 package reirokusanami.core;
 
+import com.google.common.collect.Multimap;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
@@ -11,7 +14,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import reirokusanami.Entity.EntityProjectile;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.events.TinkerToolEvent;
 import slimeknights.tconstruct.library.tinkering.Category;
@@ -26,10 +28,16 @@ import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
+import java.util.UUID;
 
 public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUser, ILauncher {
     protected abstract List<Item> getAmmoItems();
+    public abstract float baseProjectileDamage();
+    public abstract float projectileDamageModifier();
+    protected static final UUID LAUNCHER_BONUS_DAMAGE = UUID.fromString("066b8892-d2ac-4bae-ac22-26f9f91a02ee");
+    protected static final UUID LAUNCHER_DAMAGE_MODIFIER = UUID.fromString("4f76565a-3845-4a09-ba8f-92a37937a7c3");
     public GunCore(PartMaterialType... requiredComponents) {
         super(requiredComponents);
         addCategory(Category.LAUNCHER);
@@ -136,7 +144,7 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
         power *= ProjectileLauncherNBT.from(bow).range;
 
         if (!worldIn.isRemote) {
-            TinkerToolEvent.OnBowShoot toolEvent = TinkerToolEvent.OnBowShoot.fireEvent(bow, ammoIn, player, 0, baseInaccuracy());
+            TinkerToolEvent.OnBowShoot toolEvent = TinkerToolEvent.OnBowShoot.fireEvent(bow, ammoIn, player, 1, baseInaccuracy());
             ItemStack ammoShoot = ammoIn.copy();
             for (int i = 0; i < toolEvent.projectileCount; i++){
                 boolean usedAmmo = false;
@@ -147,7 +155,7 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
                 if (i > 0) {
                     baseInAccuracy += toolEvent.getBaseInaccuracy();
                 }
-                EntityArrow projectile = getProjectileEntity(ammoShoot, bow, worldIn, player, power, baseInAccuracy, 0, usedAmmo);
+                EntityArrow projectile = getProjectileEntity(ammoShoot, bow, worldIn, player, power, baseInAccuracy, 1, usedAmmo);
                 if(projectile != null && ProjectileEvent.OnLaunch.fireEvent(projectile, bow, player)){
                     if(!player.capabilities.isCreativeMode){
                         ToolHelper.damageTool(bow, 1, player);
@@ -155,6 +163,18 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
                     worldIn.spawnEntity(projectile);
                 }
             }
+        }
+    }
+
+    @Override
+    public void modifyProjectileAttributes(Multimap<String, AttributeModifier> projectileAttributes, @Nullable ItemStack launcher, ItemStack projectile, float power) {
+        double Damage = baseProjectileDamage() * power;
+        Damage += ProjectileLauncherNBT.from(launcher).bonusDamage;
+        if(Damage != 0){
+            projectileAttributes.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(LAUNCHER_BONUS_DAMAGE, "Launcher bonus damege", Damage, 0));
+        }
+        if(projectileDamageModifier() != 0);{
+            projectileAttributes.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(LAUNCHER_DAMAGE_MODIFIER, "Launcher damage modifier", projectileDamageModifier() - 1f, 1));
         }
     }
 }

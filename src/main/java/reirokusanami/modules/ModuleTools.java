@@ -7,25 +7,29 @@ import reirokusanami.handler.TGCRegister;
 import reirokusanami.materials.GunMaterialTypes;
 import reirokusanami.materials.OrbMaterialStats;
 import reirokusanami.miscellaneous.TGCConfig;
+import reirokusanami.tools.Ammo.AmmoBullet;
 import reirokusanami.tools.WeaponHandgun;
 import reirokusanami.tools.WeaponSorceryGun;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
+import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
-public class ModuleTools implements IModule {
+public class ModuleTools extends AbstractToolPulse implements IModule {
+	//MATERIALS
 	public static final Material ENDERPEARL_MATERIAL = new Material("enderpearl", 0X008b8b, false);
+	//public static final Material GUNPOWDER_MATERIAL = new Material("gunpowder", 0XD8e5ee, false);
 
 	// PARTS
-	public static ToolPart	partBarrelMedium;
-	public static ToolPart	partHammer;
-	public static ToolPart	partMuzzle;
-	public static ToolPart	partGrip;
-	public static ToolPart	partBulletcartridge;
-	public static ToolPart	partWarhead;
-	public static ToolPart	partPropellant;
+	public static ToolPart partBarrelMedium;
+	public static ToolPart partHammer;
+	public static ToolPart partMuzzle;
+	public static ToolPart partGrip;
+	public static ToolPart partBulletcartridge;
+	public static ToolPart partWarhead;
+	public static ToolPart partPropellant;
 	public static ToolPart partCore;
 	public static ToolPart partSmallHandle;
 	public static ToolPart partSmallBarrel;
@@ -33,6 +37,7 @@ public class ModuleTools implements IModule {
 	// TOOLS
 	public static ToolCore	toolWeaponHandgun;
 	public static ToolCore toolWeaponSorceryGun;
+	public static AmmoBullet bullet;
 
 	public static void initializationItems(IForgeRegistry<Item> registry) {
 		partBarrelMedium = TGCRegister.registerParts("medium_barrel", 8, registry);
@@ -42,8 +47,11 @@ public class ModuleTools implements IModule {
 		partCore = TGCRegister.registerOrbParts("orb", 1, registry);
 		partSmallHandle = TGCRegister.registerParts("smallhandle", 1, registry);
 		partSmallBarrel = TGCRegister.registerParts("smallbarrel", 3, registry);
+		partBulletcartridge = TGCRegister.registerParts("bulletcartridge", 3, registry);
+		partWarhead = TGCRegister.registerParts("warhead", 2, registry);
+		partPropellant = TGCRegister.registerParts("propellant", 2, registry);
 
-
+		//MATERIAL
 		Material.UNKNOWN.addStats(new OrbMaterialStats(1, 1));
 
 
@@ -55,6 +63,7 @@ public class ModuleTools implements IModule {
 
 		toolWeaponHandgun = TGCRegister.registerTools(TGCConfig.WeaponCategoly.handGun, new WeaponHandgun(), registry);
 		toolWeaponSorceryGun = TGCRegister.registerTools(TGCConfig.WeaponCategoly.sorceryGun, new WeaponSorceryGun(), registry);
+		bullet = registerTool(registry, new AmmoBullet(), "bullet");
 
 		TinkerRegistry.registerToolCrafting(toolWeaponSorceryGun);
 	}

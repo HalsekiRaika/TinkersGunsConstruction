@@ -1,6 +1,6 @@
 [
 {
-  "modid": "tinkersgunsconstruction",
+  "modid": "tgc",
   "name": "Tinkers Guns Construction",
   "description": "Add Customization Guns mod with Tinkers Construct.",
   "version": "${version}",
