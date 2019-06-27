@@ -62,8 +62,8 @@ public class TinkersGunsConstruction {
 
 	@SubscribeEvent
 	public void registerEntity(RegistryEvent.Register<EntityEntry> event) {
-		EntityRegistry.registerModEntity(new ResourceLocation(MODID, "bullet"), EntityProjectile.class, "bullet", EnumEntityIDs.BULLET.ordinal(), instance, 64, 1,false);
-		EntityRegistry.registerModEntity(new ResourceLocation(MODID, "magicbullet"), EntityMagicProjectile.class, "magicbullet", EnumEntityIDs.MAGICBULLET.ordinal(), instance, 64, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID, "bullet"), EntityProjectile.class, "bullet", EnumEntityIDs.BULLET.ordinal(), instance, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID, "magicbullet"), EntityMagicProjectile.class, "magicbullet", EnumEntityIDs.MAGICBULLET.ordinal(), instance, 64, 1, true);
 	}
 
 	@SideOnly(Side.CLIENT)

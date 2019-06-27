@@ -57,8 +57,8 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 
 		ENDERPEARL_MATERIAL.setCraftable(true);
 		ENDERPEARL_MATERIAL.addItem(Items.ENDER_PEARL, 1, Material.VALUE_Ingot);
-		ENDERPEARL_MATERIAL.addTrait(TinkerTraits.alien, GunMaterialTypes.ORB);
-		TinkerRegistry.addMaterialStats(ENDERPEARL_MATERIAL, new OrbMaterialStats(160, 3));
+		ENDERPEARL_MATERIAL.addTrait(TinkerTraits.enderference, GunMaterialTypes.ORB);
+		TinkerRegistry.addMaterialStats(ENDERPEARL_MATERIAL, new OrbMaterialStats(-40, 3));
 		TinkerRegistry.addMaterial(ENDERPEARL_MATERIAL);
 
 		toolWeaponHandgun = TGCRegister.registerTools(TGCConfig.WeaponCategoly.handGun, new WeaponHandgun(), registry);

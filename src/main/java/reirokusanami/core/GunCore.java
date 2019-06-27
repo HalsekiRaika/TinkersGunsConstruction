@@ -1,6 +1,7 @@
 package reirokusanami.core;
 
 import com.google.common.collect.Multimap;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -11,11 +12,12 @@ import net.minecraft.item.*;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import reirokusanami.event.GunToolEvent;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
-import slimeknights.tconstruct.library.events.TinkerToolEvent;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.IAmmoUser;
@@ -60,6 +62,13 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
     @Override
     public int getMaxItemUseDuration(ItemStack stack) {
         return 72000;
+    }
+
+    public boolean dealDamage(ItemStack stack, EntityLivingBase player, Entity entity, float damage) {
+        if (player instanceof EntityPlayer) {
+            return entity.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) player), 1.0F);
+        }
+        return entity.attackEntityFrom(DamageSource.causeMobDamage(player), 1.0F);
     }
 
     @Override
@@ -144,7 +153,7 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
         power *= ProjectileLauncherNBT.from(bow).range;
 
         if (!worldIn.isRemote) {
-            TinkerToolEvent.OnBowShoot toolEvent = TinkerToolEvent.OnBowShoot.fireEvent(bow, ammoIn, player, 1, baseInaccuracy());
+            GunToolEvent.OnGunShoot toolEvent = GunToolEvent.OnGunShoot.fireEvent(bow, ammoIn, player, 1, baseInaccuracy());
             ItemStack ammoShoot = ammoIn.copy();
             for (int i = 0; i < toolEvent.projectileCount; i++){
                 boolean usedAmmo = false;

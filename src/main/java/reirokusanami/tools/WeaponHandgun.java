@@ -1,7 +1,5 @@
 package reirokusanami.tools;
 
-import java.util.List;
-
 import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
@@ -15,9 +13,9 @@ import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
-import slimeknights.tconstruct.library.tools.ToolNBT;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class WeaponHandgun extends GunCore {
 
@@ -49,7 +47,7 @@ public class WeaponHandgun extends GunCore {
 
 	@Override
 	public float projectileDamageModifier() {
-		return 0;
+        return 0.4F;
 	}
 
 	@Override
