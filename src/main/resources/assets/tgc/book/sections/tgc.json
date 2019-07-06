@@ -5,9 +5,14 @@
     "data": "intro/tgc.json"
   },
   {
-    "name": "weaponHandgun",
+    "name": "handgun",
     "type": "tool",
-    "data": "tools/weaponHandgun.json"
+    "data": "tools/handgun.json"
+  },
+  {
+    "name": "sorcerygun",
+    "type": "tool",
+    "data": "tools/sorcerygun.json"
   },
   {
     "type": "blank"

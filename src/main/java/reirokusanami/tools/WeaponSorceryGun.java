@@ -46,7 +46,7 @@ public class WeaponSorceryGun extends GunCore {
         return 2;
     }
 
-
+    @Override
     public ProjectileLauncherNBT buildTagData(List<Material> materialList) {
         GunNBT NBT2 = new GunNBT();
         NBT2.handle(materialList.get(0).getStatsOrUnknown(MaterialTypes.HANDLE));
@@ -78,18 +78,24 @@ public class WeaponSorceryGun extends GunCore {
 
     @Override
     public float baseProjectileDamage() {
-        return 1.0F;
+        return 0.8F;
     }
 
     @Override
     public float projectileDamageModifier() {
-        return 1.1F;
+        return 1.0F;
     }
 
+    @Override
     protected float baseInaccuracy() {
-        return 0.06f;
+        return 0.002f;
     }
 
+    protected float baseInaccuracyRange() {
+        return 0.5f;
+    }
+
+    @Override
     protected float baseProjectileSpeed() {
         return 4.0f;
     }

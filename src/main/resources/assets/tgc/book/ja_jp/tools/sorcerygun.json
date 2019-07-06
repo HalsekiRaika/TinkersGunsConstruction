@@ -1,0 +1,18 @@
+{
+  "tool": "sorcerygun",
+  "text": [
+    {
+      "text": "SorceryGunはクールダウンがある代わりに、安定して敵に向けて発射することができる銃です"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "この銃はオーブを中心に成り立つ銃で、オーブごとによって様々な効果をもたらします"
+    }
+  ],
+  "properties": [
+    "Basic magic weapon",
+    "Woah!"
+  ]
+}

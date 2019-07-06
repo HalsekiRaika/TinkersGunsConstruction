@@ -42,6 +42,12 @@ public class TinkersGunsConstruction {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
+
+		if (event.getSide().isClient()) {
+
+			//JapariRenderingRegistry.registerRenderers();
+
+		}
 	}
 
 	@EventHandler

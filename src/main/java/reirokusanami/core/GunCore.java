@@ -49,8 +49,12 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
         return 0.5f;
     }
 
-    protected float baseProjectileSpeed(){
-        return 20.0f;
+    protected float baseProjectileSpeed() {
+        return 4.0f;
+    }
+
+    protected float baseInaccuracyRange() {
+        return 1.0f;
     }
 
     @Nonnull
@@ -164,6 +168,8 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
                 if (i > 0) {
                     baseInAccuracy += toolEvent.getBaseInaccuracy();
                 }
+
+                baseInAccuracy *= baseInaccuracyRange();
                 EntityArrow projectile = getProjectileEntity(ammoShoot, bow, worldIn, player, power, baseInAccuracy, 1, usedAmmo);
                 if(projectile != null && ProjectileEvent.OnLaunch.fireEvent(projectile, bow, player)){
                     if(!player.capabilities.isCreativeMode){
@@ -174,6 +180,7 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
             }
         }
     }
+
 
     @Override
     public void modifyProjectileAttributes(Multimap<String, AttributeModifier> projectileAttributes, @Nullable ItemStack launcher, ItemStack projectile, float power) {

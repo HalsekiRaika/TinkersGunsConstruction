@@ -1,0 +1,18 @@
+{
+  "tool": "sorcerygun",
+  "text": [
+    {
+      "text": "SorceryGun is a gun that can be launched stably towards the enemy instead of having a cooldown"
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "This gun is centered on the orb and has various effects depending on the orb"
+    }
+  ],
+  "properties": [
+    "Basic magic weapon",
+    "Woah!"
+  ]
+}

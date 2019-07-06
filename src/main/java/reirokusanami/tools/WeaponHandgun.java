@@ -52,7 +52,16 @@ public class WeaponHandgun extends GunCore {
 
 	@Override
 	protected float baseProjectileSpeed() {
-		return 16;
+		return 5.0f;
+	}
+
+	@Override
+	protected float baseInaccuracy() {
+		return 0.5f;
+	}
+
+	protected float baseInaccuracyRange() {
+		return 0.8f;
 	}
 
 	@Override
