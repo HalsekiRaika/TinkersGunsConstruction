@@ -92,7 +92,7 @@ public class WeaponSorceryGun extends GunCore {
     }
 
     protected float baseInaccuracyRange() {
-        return 0.5f;
+        return 0.05f;
     }
 
     @Override

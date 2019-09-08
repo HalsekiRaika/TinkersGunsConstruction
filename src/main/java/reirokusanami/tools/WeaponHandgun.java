@@ -52,7 +52,7 @@ public class WeaponHandgun extends GunCore {
 
 	@Override
 	protected float baseProjectileSpeed() {
-		return 5.0f;
+		return 7.0f;
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class WeaponHandgun extends GunCore {
 	}
 
 	protected float baseInaccuracyRange() {
-		return 0.8f;
+		return 0.45f;
 	}
 
 	@Override
