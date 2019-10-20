@@ -63,7 +63,7 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 
 		toolWeaponHandgun = TGCRegister.registerTools(TGCConfig.WeaponCategoly.handGun, new WeaponHandgun(), registry);
 		toolWeaponSorceryGun = TGCRegister.registerTools(TGCConfig.WeaponCategoly.sorceryGun, new WeaponSorceryGun(), registry);
-		bullet = registerTool(registry, new AmmoBullet(), "bullet");
+		bullet = TGCRegister.registerAmmos(new AmmoBullet(), registry);
 
 		TinkerRegistry.registerToolCrafting(toolWeaponSorceryGun);
 	}

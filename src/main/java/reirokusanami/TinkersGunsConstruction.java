@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
 import reirokusanami.Entity.EntityMagicProjectile;
 import reirokusanami.Entity.EntityProjectile;
+import reirokusanami.client.render.EntityRenderHandler;
 import reirokusanami.handler.TGCRegister;
 import reirokusanami.modules.ModuleTools;
 import reirokusanami.utils.EnumEntityIDs;
@@ -44,9 +45,7 @@ public class TinkersGunsConstruction {
 		logger = event.getModLog();
 
 		if (event.getSide().isClient()) {
-
-			//JapariRenderingRegistry.registerRenderers();
-
+			EntityRenderHandler.renderEntity();
 		}
 	}
 

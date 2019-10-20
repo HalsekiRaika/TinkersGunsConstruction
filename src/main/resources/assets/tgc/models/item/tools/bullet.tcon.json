@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tgc:items/ammo/partcore_ammo_bullet",
+    "layer1": "tgc:items/ammo/partcore_ammo_propellant",
+    "layer2": "tgc:items/ammo/partcore_ammo_cartridge"
+  }
+}

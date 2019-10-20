@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.proxy.UsualProxy;
+import reirokusanami.tools.Ammo.AmmoBullet;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.Pattern;
@@ -74,6 +75,14 @@ public class TGCRegister {
 			return toolCore;
 		}
 		return null;
+	}
+
+	public static AmmoBullet registerAmmos(AmmoBullet toolCore, IForgeRegistry<Item> registry) {
+
+		registry.register(toolCore);
+		TinkerRegistry.registerTool(toolCore);
+		TOOL_CORES.add(toolCore);
+		return toolCore;
 	}
 
 

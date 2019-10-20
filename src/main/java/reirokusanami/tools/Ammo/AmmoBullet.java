@@ -1,11 +1,12 @@
 package reirokusanami.tools.Ammo;
 
 import com.google.common.collect.ImmutableList;
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import reirokusanami.Entity.EntityProjectile;
+import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.modules.ModuleTools;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.materials.*;
@@ -25,6 +26,8 @@ public class AmmoBullet extends ProjectileCore {
               PartMaterialType.arrowHead(ModuleTools.partWarhead));
         addCategory(Category.NO_MELEE, Category.PROJECTILE);
         toolBuildComponents = ImmutableList.of(requiredComponents[0], requiredComponents[2]);
+        this.setUnlocalizedName("bullet");
+        this.setRegistryName(new ResourceLocation(TinkersGunsConstruction.MODID, this.getUnlocalizedName().substring(5)));
     }
 
     @Override
