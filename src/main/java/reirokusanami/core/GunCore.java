@@ -45,6 +45,10 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
         addCategory(Category.LAUNCHER);
     }
 
+    /**
+     * Accuracy is less accurate as the value is higher. </br>
+     * On the other hand, if it is made smaller, it will be close to straight.
+     */
     protected float baseInaccuracy(){
         return 0.5f;
     }
@@ -125,8 +129,7 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
         }
         if(ammo.getItem() instanceof IAmmo) {
             return ((IAmmo) ammo.getItem()).useAmmo(ammo, player);
-        }
-        else {
+        } else {
             ammo.shrink(1);
             if (ammo.isEmpty())
             {
@@ -180,6 +183,7 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
             }
         }
     }
+
 
 
     @Override

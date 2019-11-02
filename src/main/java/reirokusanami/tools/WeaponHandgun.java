@@ -76,8 +76,6 @@ public class WeaponHandgun extends GunCore {
 		return BulletMatches;
 	}
 
-
-
 	@Nonnull
 	@Override
 	public ItemStack getAmmoToRender(@Nonnull ItemStack weapon, EntityLivingBase player) {
