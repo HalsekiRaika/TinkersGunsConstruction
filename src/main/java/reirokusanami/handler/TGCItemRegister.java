@@ -2,7 +2,6 @@ package reirokusanami.handler;
 
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.TinkersGunsConstruction;

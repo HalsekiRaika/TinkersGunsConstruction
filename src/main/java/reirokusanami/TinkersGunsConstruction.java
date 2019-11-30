@@ -20,6 +20,7 @@ import org.apache.logging.log4j.Logger;
 import reirokusanami.Entity.EntityMagicProjectile;
 import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.client.render.EntityRenderHandler;
+import reirokusanami.handler.TGCItemRegister;
 import reirokusanami.handler.TGCToolRegister;
 import reirokusanami.modules.ModuleItems;
 import reirokusanami.modules.ModuleTools;
@@ -78,6 +79,7 @@ public class TinkersGunsConstruction {
 	public void registerModels(ModelRegistryEvent event) {
 		// GunsBlocks.registerModels();
 		// GunsItems.registerModels();
+		TGCItemRegister.getTGCItems().forEach(item -> ModelRegisterUtil.registerItemModel(item));
 		TGCToolRegister.getTGCPart().forEach(part -> ModelRegisterUtil.registerPartModel(part));
 		TGCToolRegister.getTGCTool().forEach(tool -> ModelRegisterUtil.registerToolModel(tool));
 		TinkerBook.INSTANCE.addRepository(new FileRepository(MODID + ":book"));
