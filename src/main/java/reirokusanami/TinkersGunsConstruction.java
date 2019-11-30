@@ -20,7 +20,8 @@ import org.apache.logging.log4j.Logger;
 import reirokusanami.Entity.EntityMagicProjectile;
 import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.client.render.EntityRenderHandler;
-import reirokusanami.handler.TGCRegister;
+import reirokusanami.handler.TGCToolRegister;
+import reirokusanami.modules.ModuleItems;
 import reirokusanami.modules.ModuleTools;
 import reirokusanami.utils.EnumEntityIDs;
 import slimeknights.mantle.client.book.repository.FileRepository;
@@ -62,7 +63,8 @@ public class TinkersGunsConstruction {
 	@SubscribeEvent
 	public void registerItems(RegistryEvent.Register<Item> event) {
 		// GunsBlocks.registerItemBlocks(registry);
-		ModuleTools.initializationItems(event.getRegistry());
+		ModuleItems.InitializationItems(event.getRegistry());
+		ModuleTools.initializationTools(event.getRegistry());
 	}
 
 	@SubscribeEvent
@@ -76,8 +78,8 @@ public class TinkersGunsConstruction {
 	public void registerModels(ModelRegistryEvent event) {
 		// GunsBlocks.registerModels();
 		// GunsItems.registerModels();
-		TGCRegister.getTGCPart().forEach(part -> ModelRegisterUtil.registerPartModel(part));
-		TGCRegister.getTGCTool().forEach(tool -> ModelRegisterUtil.registerToolModel(tool));
+		TGCToolRegister.getTGCPart().forEach(part -> ModelRegisterUtil.registerPartModel(part));
+		TGCToolRegister.getTGCTool().forEach(tool -> ModelRegisterUtil.registerToolModel(tool));
 		TinkerBook.INSTANCE.addRepository(new FileRepository(MODID + ":book"));
 	}
 }

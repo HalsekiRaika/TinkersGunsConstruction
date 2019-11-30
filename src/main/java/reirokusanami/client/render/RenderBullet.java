@@ -5,7 +5,6 @@ import reirokusanami.Entity.EntityProjectile;
 import slimeknights.tconstruct.library.client.renderer.RenderProjectileBase;
 
 public class RenderBullet extends RenderProjectileBase<EntityProjectile> {
-
     public RenderBullet(RenderManager renderManager) {
         super(renderManager);
     }

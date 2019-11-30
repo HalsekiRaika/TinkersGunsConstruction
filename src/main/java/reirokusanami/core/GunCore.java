@@ -138,6 +138,23 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
             return true;
         }
     }
+    /*
+    public EntityArrow getProjectileEntity(ItemStack ammo, ItemStack bow, World world, EntityPlayer player, float power, float inaccuracy, float progress, boolean usedAmmo){
+        if(ammo.getItem() instanceof IAmmo){
+            return ((IAmmo) ammo.getItem()).getProjectile(ammo, bow, world, player, power, inaccuracy, progress, usedAmmo);
+        } else if (ammo.getItem() instanceof ItemArrow) {
+            EntityArrow projectile = ((ItemArrow) ammo.getItem()).createArrow(world, ammo, player);
+            projectile.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, power, inaccuracy);
+            if(player.capabilities.isCreativeMode){
+                projectile.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+            } else if (!usedAmmo) {
+                projectile.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+            }
+            return projectile;
+        }
+        return null;
+    }
+    */
 
     public EntityArrow getProjectileEntity(ItemStack ammo, ItemStack bow, World world, EntityPlayer player, float power, float inaccuracy, float progress, boolean usedAmmo){
         if(ammo.getItem() instanceof IAmmo){

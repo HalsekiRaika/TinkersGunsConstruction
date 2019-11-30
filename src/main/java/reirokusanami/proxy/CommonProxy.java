@@ -11,6 +11,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 
-public class UsualProxy {
+public class CommonProxy {
 
 }

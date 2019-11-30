@@ -3,10 +3,12 @@ package reirokusanami.handler;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.TinkersGunsConstruction;
-import reirokusanami.proxy.UsualProxy;
+import reirokusanami.proxy.CommonProxy;
 import reirokusanami.tools.Ammo.AmmoBullet;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
@@ -19,15 +21,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TGCRegister {
+public class TGCToolRegister {
 
 	private static final List<ToolPart>	TOOL_PARTS		= new ArrayList<>();
 	private static final List<ToolCore>	TOOL_CORES		= new ArrayList<>();
 	private static final String			CLIENT_PROXY	= "reirokusanami.proxy.ClientProxy";
-	private static final String			SERVER_PROXY	= "reirokusanami.proxy.UsualProxy";
+	private static final String			SERVER_PROXY	= "reirokusanami.proxy.CommonProxy";
 
 	@SidedProxy(clientSide = CLIENT_PROXY)
-	public static UsualProxy	proxy;
+	public static CommonProxy proxy;
 
 	/**
 	 * @param name     Enter the ToolPart name.
