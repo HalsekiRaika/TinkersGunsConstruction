@@ -14,10 +14,9 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
-import slimeknights.tconstruct.tools.AbstractToolPulse;
 import slimeknights.tconstruct.tools.TinkerTraits;
 
-public class ModuleTools extends AbstractToolPulse implements IModule {
+public class ModuleTools implements IModule {
 	//MATERIALS
 	public static final Material ENDERPEARL_MATERIAL = new Material("enderpearl", 0X008b8b, false);
 	//public static final Material GUNPOWDER_MATERIAL = new Material("gunpowder", 0XD8e5ee, false);
@@ -35,7 +34,7 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 	public static ToolPart partSmallBarrel;
 
 	// TOOLS
-	public static ToolCore	toolWeaponHandgun;
+	public static ToolCore toolWeaponHandgun;
 	public static ToolCore toolWeaponSorceryGun;
 	public static AmmoBullet bullet;
 
@@ -63,7 +62,7 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 
 		toolWeaponHandgun = TGCToolRegister.registerTools(TGCConfig.WeaponCategoly.handGun, new WeaponHandgun(), registry);
 		toolWeaponSorceryGun = TGCToolRegister.registerTools(TGCConfig.WeaponCategoly.sorceryGun, new WeaponSorceryGun(), registry);
-		bullet = TGCToolRegister.registerAmmos(new AmmoBullet(), registry);
+		bullet = TGCToolRegister.registerBullets(new AmmoBullet(), registry);
 
 		TinkerRegistry.registerToolCrafting(toolWeaponSorceryGun);
 	}

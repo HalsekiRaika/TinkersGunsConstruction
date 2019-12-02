@@ -79,7 +79,7 @@ public class TGCToolRegister {
 		return null;
 	}
 
-	public static AmmoBullet registerAmmos(AmmoBullet toolCore, IForgeRegistry<Item> registry) {
+	public static AmmoBullet registerBullets(AmmoBullet toolCore, IForgeRegistry<Item> registry) {
 
 		registry.register(toolCore);
 		TinkerRegistry.registerTool(toolCore);

@@ -1,10 +1,19 @@
-#
+#Items
+item.magazine.name=Magazine
+
+#Parts
 item.orb.name=Orb
 item.hammer.name=Hammer
 item.grip.name=Grip
 item.smallhandle.name=Small Handle
+item.smallbarrel.name=Small Barrel
 item.medium_barrel.name=Medium Barrel
 item.muzzle.name=Muzzle
+item.bulletcartridge.name=Cartridge
+item.warhead.name=WarHead
+item.propellant.name=Propellant
 
+#Tools
 item.sorcerygun.name=SorceryGun
 item.handgun.name=HandGun
+item.bullet.name=Bullet

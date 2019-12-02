@@ -8,6 +8,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -24,6 +25,7 @@ import reirokusanami.handler.TGCItemRegister;
 import reirokusanami.handler.TGCToolRegister;
 import reirokusanami.modules.ModuleItems;
 import reirokusanami.modules.ModuleTools;
+import reirokusanami.proxy.CommonProxy;
 import reirokusanami.utils.EnumEntityIDs;
 import slimeknights.mantle.client.book.repository.FileRepository;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
@@ -32,15 +34,19 @@ import slimeknights.tconstruct.library.book.TinkerBook;
 @Mod(modid = TinkersGunsConstruction.MODID, name = TinkersGunsConstruction.MODNAME, version = TinkersGunsConstruction.VERSION, dependencies = TinkersGunsConstruction.DEPENDENCIES)
 public class TinkersGunsConstruction {
 
-	public static final String	MODID			= "tgc";
-	public static final String	MODNAME			= "TinkersGunsConstruction";
-	public static final String	VERSION			= "0.1.0";
-	public static final String	DEPENDENCIES	= "required-after:mantle;" + "required-after:tconstruct@[1.12.2-2.12.0.135,);" + "required-after:forge@[14.23.5.2836,)";
-	public static Logger		logger;
+	public static final String MODID		= "tgc";
+	public static final String MODNAME		= "TinkersGunsConstruction";
+	public static final String VERSION		= "0.1.0";
+	public static final String DEPENDENCIES	= "required-after:mantle;" + "required-after:tconstruct@[1.12.2-2.12.0.135,);" + "required-after:forge@[14.23.5.2836,)";
+	public static final String CLIENT_PROXY	= "reirokusanami.proxy.ClientProxy";
+	public static final String SERVER_PROXY	= "reirokusanami.proxy.CommonProxy";
+	public static Logger       logger;
 
 	@Instance(TinkersGunsConstruction.MODID)
 	public static TinkersGunsConstruction	instance;
 
+	@SidedProxy(clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
+	public static CommonProxy proxy;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
