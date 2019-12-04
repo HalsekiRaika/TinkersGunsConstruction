@@ -18,8 +18,8 @@ import javax.annotation.Nullable;
 public class ModBulletDance extends ProjectileModifierTrait {
     public ModBulletDance() {
         super("bulletdance", 0xffffff);
-        MinecraftForge.EVENT_BUS.register(this);
         addAspects(ModifierAspect.projectileOnly);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override

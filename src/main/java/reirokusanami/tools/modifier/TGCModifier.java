@@ -19,6 +19,5 @@ public class TGCModifier {
     public static void setupModifier() {
         modBulletDance = new ModBulletDance();
         modBulletDance.addItem(itemMagazine);
-        TGCModifierRegister.registerModifier(modBulletDance);
     }
 }

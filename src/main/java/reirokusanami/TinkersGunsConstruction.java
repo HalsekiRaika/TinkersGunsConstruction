@@ -26,6 +26,7 @@ import reirokusanami.handler.TGCToolRegister;
 import reirokusanami.modules.ModuleItems;
 import reirokusanami.modules.ModuleTools;
 import reirokusanami.proxy.CommonProxy;
+import reirokusanami.tools.modifier.TGCModifier;
 import reirokusanami.utils.EnumEntityIDs;
 import slimeknights.mantle.client.book.repository.FileRepository;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
@@ -68,9 +69,10 @@ public class TinkersGunsConstruction {
 	}
 
 	@SubscribeEvent
-	public void registerItems(RegistryEvent.Register<Item> event) {
+	public void register(RegistryEvent.Register<Item> event) {
 		// GunsBlocks.registerItemBlocks(registry);
 		ModuleItems.InitializationItems(event.getRegistry());
+		TGCModifier.setupModifier();
 		ModuleTools.initializationTools(event.getRegistry());
 	}
 
