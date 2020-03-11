@@ -2,17 +2,25 @@ package reirokusanami.tools;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.core.GunCore;
+import reirokusanami.event.GunToolEvent;
 import reirokusanami.modules.ModuleTools;
+import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
+import slimeknights.tconstruct.library.utils.ToolHelper;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -57,7 +65,7 @@ public class WeaponHandgun extends GunCore {
 
 	@Override
 	protected float baseInaccuracy() {
-		return 0.5f;
+		return 0.0004f;
 	}
 
 	protected float baseInaccuracyRange() {
@@ -74,6 +82,37 @@ public class WeaponHandgun extends GunCore {
 			BulletMatches = builder.build();
 		}
 		return BulletMatches;
+	}
+
+	@Override
+	public void ShootProjectile(@Nonnull ItemStack ammoIn, @Nonnull ItemStack bow, World worldIn, EntityPlayer player) {
+		EntityProjectile.setRegexAccuracy(0.004f);
+		float power = ItemBow.getArrowVelocity(30) * baseProjectileSpeed();
+		power *= ProjectileLauncherNBT.from(bow).range;
+
+		if (!worldIn.isRemote) {
+			GunToolEvent.OnGunShoot toolEvent = GunToolEvent.OnGunShoot.fireEvent(bow, ammoIn, player, 1, baseInaccuracy());
+			ItemStack ammoShoot = ammoIn.copy();
+			for (int i = 0; i < toolEvent.projectileCount; i++){
+				boolean usedAmmo = false;
+				if(i == 0 || toolEvent.consumeAmmoPerProjectile){
+					usedAmmo = consumeAmmo(ammoIn, player);
+				}
+				float baseInAccuracy = toolEvent.bonusInaccuracy;
+				if (i > 0) {
+					baseInAccuracy += 0.004;
+				}
+
+				baseInAccuracy *= baseInaccuracyRange();
+				EntityArrow projectile = getProjectileEntity(ammoShoot, bow, worldIn, player, power, baseInAccuracy, 1, usedAmmo);
+				if(projectile != null && ProjectileEvent.OnLaunch.fireEvent(projectile, bow, player)){
+					if(!player.capabilities.isCreativeMode){
+						ToolHelper.damageTool(bow, 1, player);
+					}
+					worldIn.spawnEntity(projectile);
+				}
+			}
+		}
 	}
 
 	@Nonnull
