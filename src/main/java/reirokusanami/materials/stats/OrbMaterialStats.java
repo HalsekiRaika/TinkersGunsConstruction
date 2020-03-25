@@ -1,7 +1,8 @@
-package reirokusanami.materials;
+package reirokusanami.materials.stats;
 
 import com.google.common.collect.Lists;
 import net.minecraft.util.text.TextFormatting;
+import reirokusanami.materials.TGCMaterialTypes;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.client.CustomFontColor;
 import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
@@ -23,7 +24,7 @@ public class OrbMaterialStats extends AbstractMaterialStats {
     public final float attack; // usually between 0 and 10 (in 1/2 hearts, so divide by 2 for damage in hearts)
 
     public OrbMaterialStats(int durability, float attack) {
-        super(GunMaterialTypes.ORB);
+        super(TGCMaterialTypes.ORB);
         this.durability = durability;
         this.attack = attack;
     }

@@ -14,8 +14,9 @@ import net.minecraft.world.World;
 import reirokusanami.TinkersGunsConstruction;
 import reirokusanami.core.GunCore;
 import reirokusanami.materials.GunMaterial;
-import reirokusanami.materials.GunMaterialTypes;
+import reirokusanami.materials.TGCMaterialTypes;
 import reirokusanami.modules.ModuleTools;
+import reirokusanami.materials.gunstats.SorceryGunNBT;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.Category;
@@ -48,11 +49,11 @@ public class WeaponSorceryGun extends GunCore {
 
     @Override
     public ProjectileLauncherNBT buildTagData(List<Material> materialList) {
-        GunNBT NBT2 = new GunNBT();
+        SorceryGunNBT NBT2 = new SorceryGunNBT();
         NBT2.handle(materialList.get(0).getStatsOrUnknown(MaterialTypes.HANDLE));
         NBT2.head(materialList.get(1).getStatsOrUnknown(MaterialTypes.HEAD));
         // Now for the time being [Extra]
-        NBT2.orbextra(materialList.get(2).getStatsOrUnknown(GunMaterialTypes.ORB));
+        NBT2.orbextra(materialList.get(2).getStatsOrUnknown(TGCMaterialTypes.ORB));
 
         return NBT2;
     }

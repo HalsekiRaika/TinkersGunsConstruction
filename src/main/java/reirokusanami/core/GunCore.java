@@ -11,12 +11,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatList;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
+import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.event.GunToolEvent;
+import reirokusanami.event.TGCSoundEvents;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
@@ -35,6 +34,8 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUser, ILauncher {
+
+    SoundEvent OnFireSound = TGCSoundEvents.OnFireHandGun;
     protected abstract List<Item> getAmmoItems();
     public abstract float baseProjectileDamage();
     public abstract float projectileDamageModifier();
@@ -182,9 +183,12 @@ public abstract class GunCore extends ProjectileLauncherCore implements IAmmoUse
                 }
             }
         }
+        playOnFireSound(power, worldIn, player, OnFireSound);
     }
 
-
+    public void playOnFireSound(float power, World world, EntityPlayer entityPlayer, SoundEvent event) {
+        world.playSound(null, entityPlayer.posX, entityPlayer.posY, entityPlayer.posZ, event, SoundCategory.NEUTRAL, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + power * 0.5F);
+    }
 
     @Override
     public void modifyProjectileAttributes(Multimap<String, AttributeModifier> projectileAttributes, @Nullable ItemStack launcher, ItemStack projectile, float power) {

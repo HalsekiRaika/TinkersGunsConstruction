@@ -4,8 +4,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.handler.TGCRegister;
-import reirokusanami.materials.GunMaterialTypes;
-import reirokusanami.materials.OrbMaterialStats;
+import reirokusanami.materials.TGCMaterialTypes;
+import reirokusanami.materials.stats.OrbMaterialStats;
 import reirokusanami.miscellaneous.TGCConfig;
 import reirokusanami.tools.Ammo.AmmoBullet;
 import reirokusanami.tools.WeaponHandgun;
@@ -57,7 +57,7 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 
 		ENDERPEARL_MATERIAL.setCraftable(true);
 		ENDERPEARL_MATERIAL.addItem(Items.ENDER_PEARL, 1, Material.VALUE_Ingot);
-		ENDERPEARL_MATERIAL.addTrait(TinkerTraits.enderference, GunMaterialTypes.ORB);
+		ENDERPEARL_MATERIAL.addTrait(TinkerTraits.enderference, TGCMaterialTypes.ORB);
 		TinkerRegistry.addMaterialStats(ENDERPEARL_MATERIAL, new OrbMaterialStats(-40, 3));
 		TinkerRegistry.addMaterial(ENDERPEARL_MATERIAL);
 

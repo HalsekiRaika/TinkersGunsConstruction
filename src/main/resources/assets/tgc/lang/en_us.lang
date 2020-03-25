@@ -8,3 +8,7 @@ item.muzzle.name=Muzzle
 
 item.sorcerygun.name=SorceryGun
 item.handgun.name=HandGun
+
+# /-- STATUS --/ #
+stat.generalgungrip.reloadspeed.name=ReloadSpeed
+stat.generalgungrip.recoil.name=Recoil

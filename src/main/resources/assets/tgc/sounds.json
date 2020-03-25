@@ -1,0 +1,8 @@
+{
+    "gun.firehandgun" : {
+        "categoly": "player",
+        "sounds": [
+            "tgc:guns/normalgunfire"
+        ]
+    }
+}

@@ -32,7 +32,10 @@ public class WeaponHandgun extends GunCore {
 	private ImmutableList<Item> BulletMatches = null;
 
 	public WeaponHandgun() {
-		super(PartMaterialType.handle(ModuleTools.partGrip), PartMaterialType.head(ModuleTools.partMuzzle), new PartMaterialType(ModuleTools.partHammer), new PartMaterialType(ModuleTools.partBarrelMedium));
+		super(PartMaterialType.handle(ModuleTools.partGrip),
+			  PartMaterialType.head(ModuleTools.partMuzzle),
+		  new PartMaterialType(ModuleTools.partHammer),
+		  new PartMaterialType(ModuleTools.partBarrelMedium));
 		this.addCategory(Category.WEAPON);
 		this.setUnlocalizedName("handgun");
 		this.setRegistryName(new ResourceLocation(TinkersGunsConstruction.MODID, this.getUnlocalizedName().substring(5)));

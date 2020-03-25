@@ -1,18 +1,18 @@
-package reirokusanami.tools;
+package reirokusanami.materials.gunstats;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import reirokusanami.materials.OrbMaterialStats;
+import reirokusanami.materials.stats.OrbMaterialStats;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
 import slimeknights.tconstruct.library.tools.ToolNBT;
 import slimeknights.tconstruct.library.utils.TagUtil;
 
-public class GunNBT extends ProjectileLauncherNBT {
-    public GunNBT() {
+public class SorceryGunNBT extends ProjectileLauncherNBT {
+    public SorceryGunNBT() {
 
     }
 
-    public GunNBT(NBTTagCompound tag) {
+    public SorceryGunNBT(NBTTagCompound tag) {
         super(tag);
     }
 
@@ -30,7 +30,7 @@ public class GunNBT extends ProjectileLauncherNBT {
         return this;
     }
 
-    public static GunNBT from(ItemStack itemStack) {
-        return new GunNBT(TagUtil.getToolTag(itemStack));
+    public static SorceryGunNBT from(ItemStack itemStack) {
+        return new SorceryGunNBT(TagUtil.getToolTag(itemStack));
     }
 }

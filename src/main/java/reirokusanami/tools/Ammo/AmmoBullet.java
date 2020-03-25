@@ -42,7 +42,7 @@ public class AmmoBullet extends ProjectileCore {
 
     @Override
     public EntityProjectileBase getProjectile(@Nonnull ItemStack stack, @Nonnull ItemStack launcher, World world, EntityPlayer player, float speed, float inaccuracy, float power, boolean usedAmmo) {
-        inaccuracy = ProjectileNBT.from(stack).accuracy * speed;
+        inaccuracy = ProjectileNBT.from(stack).accuracy;
         return new EntityProjectile(world, player, speed, inaccuracy, power, getProjectileStack(stack, world, player, usedAmmo), launcher);
     }
 

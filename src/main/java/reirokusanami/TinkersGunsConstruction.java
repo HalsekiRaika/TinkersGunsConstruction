@@ -2,6 +2,7 @@ package reirokusanami;
 
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -20,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import reirokusanami.Entity.EntityMagicProjectile;
 import reirokusanami.Entity.EntityProjectile;
 import reirokusanami.client.render.EntityRenderHandler;
+import reirokusanami.event.TGCSoundEvents;
 import reirokusanami.handler.TGCRegister;
 import reirokusanami.modules.ModuleTools;
 import reirokusanami.utils.EnumEntityIDs;
@@ -60,6 +62,11 @@ public class TinkersGunsConstruction {
 	}
 
 	@SubscribeEvent
+	public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
+		TGCSoundEvents.registerSounds(event);
+	}
+
+	@SubscribeEvent
 	public void registerItems(RegistryEvent.Register<Item> event) {
 		// GunsBlocks.registerItemBlocks(registry);
 		ModuleTools.initializationItems(event.getRegistry());
@@ -80,4 +87,5 @@ public class TinkersGunsConstruction {
 		TGCRegister.getTGCTool().forEach(tool -> ModelRegisterUtil.registerToolModel(tool));
 		TinkerBook.INSTANCE.addRepository(new FileRepository(MODID + ":book"));
 	}
+
 }
