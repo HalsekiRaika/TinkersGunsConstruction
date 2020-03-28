@@ -5,6 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.handler.TGCRegister;
 import reirokusanami.materials.TGCMaterialTypes;
+import reirokusanami.materials.stats.GripMaterialStats;
+import reirokusanami.materials.stats.MediumBarrelMaterialStats;
 import reirokusanami.materials.stats.OrbMaterialStats;
 import reirokusanami.miscellaneous.TGCConfig;
 import reirokusanami.tools.Ammo.AmmoBullet;
@@ -53,6 +55,8 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 
 		//MATERIAL
 		Material.UNKNOWN.addStats(new OrbMaterialStats(1, 1));
+		Material.UNKNOWN.addStats(new GripMaterialStats(1f, 1f));
+		Material.UNKNOWN.addStats(new MediumBarrelMaterialStats(1f, 1f, 1));
 
 
 		ENDERPEARL_MATERIAL.setCraftable(true);
