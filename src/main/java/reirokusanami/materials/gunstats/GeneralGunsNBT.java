@@ -3,6 +3,7 @@ package reirokusanami.materials.gunstats;
 import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.tools.ToolNBT;
 
+@Deprecated
 public class GeneralGunsNBT extends ToolNBT {
     // -- Base Stats
     public float reloadTime;

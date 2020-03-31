@@ -7,6 +7,7 @@ import reirokusanami.handler.TGCRegister;
 import reirokusanami.materials.TGCMaterialTypes;
 import reirokusanami.materials.stats.GripMaterialStats;
 import reirokusanami.materials.stats.MediumBarrelMaterialStats;
+import reirokusanami.materials.stats.MuzzleMaterialStats;
 import reirokusanami.materials.stats.OrbMaterialStats;
 import reirokusanami.miscellaneous.TGCConfig;
 import reirokusanami.tools.Ammo.AmmoBullet;
@@ -29,7 +30,7 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 	public static ToolPart partHammer;
 	public static ToolPart partMuzzle;
 	public static ToolPart partGrip;
-	public static ToolPart partBulletcartridge;
+	public static ToolPart partBulletCartridge;
 	public static ToolPart partWarhead;
 	public static ToolPart partPropellant;
 	public static ToolPart partCore;
@@ -49,15 +50,15 @@ public class ModuleTools extends AbstractToolPulse implements IModule {
 		partCore = TGCRegister.registerOrbParts("orb", 1, registry);
 		partSmallHandle = TGCRegister.registerParts("smallhandle", 1, registry);
 		partSmallBarrel = TGCRegister.registerParts("smallbarrel", 3, registry);
-		partBulletcartridge = TGCRegister.registerParts("bulletcartridge", 3, registry);
+		partBulletCartridge = TGCRegister.registerParts("bulletcartridge", 3, registry);
 		partWarhead = TGCRegister.registerParts("warhead", 2, registry);
 		partPropellant = TGCRegister.registerParts("propellant", 2, registry);
 
 		//MATERIAL
 		Material.UNKNOWN.addStats(new OrbMaterialStats(1, 1));
 		Material.UNKNOWN.addStats(new GripMaterialStats(1f, 1f));
-		Material.UNKNOWN.addStats(new MediumBarrelMaterialStats(1f, 1f, 1));
-
+		Material.UNKNOWN.addStats(new MediumBarrelMaterialStats(1f, 1f, 1, 1f));
+		Material.UNKNOWN.addStats(new MuzzleMaterialStats(1));
 
 		ENDERPEARL_MATERIAL.setCraftable(true);
 		ENDERPEARL_MATERIAL.addItem(Items.ENDER_PEARL, 1, Material.VALUE_Ingot);

@@ -9,4 +9,6 @@ public interface TGCMaterialTypes extends MaterialTypes {
     String SMALLBARREL = "smallbarrel";
     String MEDIUMBARREL = "mediumbarrel";
     String LARGEBARREL = "largebarrel";
+    String MUZZLE = "muzzle";
+    String HAMMER = "hammer";
 }
